@@ -2,8 +2,15 @@
 " with remove End of line in end of line
 " Maintainer: Dong Weiming <ciici123@gmail.com>
 
+" check whether this script is already loaded
+if exists('g:loaded_vary')
+  finish
+endif
+
+let g:loaded_vary = 1
+
 " make tab do tabs at beginning and spaces elsewhere
-function RetabIndents()
+function! RetabIndents()
     let auto_striptab = exists('g:auto_striptab') ? g:auto_striptab : "python"
     if empty(matchstr(auto_striptab, &ft))
         return
@@ -14,7 +21,7 @@ function RetabIndents()
 endfunction
 
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-function StripTrailingWhite()
+function! StripTrailingWhite()
     let auto_striptrail = exists('g:auto_striptrail') ? g:auto_striptrail : "python"
     if empty(matchstr(auto_striptrail, &ft))
         return
